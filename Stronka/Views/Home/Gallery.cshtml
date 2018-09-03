@@ -1,0 +1,73 @@
+﻿<div class="post-title">
+    Gallery
+</div>
+<div class="gallery">
+    <center>
+        <!--
+            <div class="image" data-image-id="img.ID" style="background-image: url(img.Url)"></div>
+        -->
+        <div class="image" style="background-image: url(@Url.Content("~/Content/img/1.jpg"))"></div>
+        <div class="image" style="background-image: url(@Url.Content("~/Content/img/2.jpg"))"></div>
+        <div class="image" style="background-image: url(@Url.Content("~/Content/img/3.jpg"))"></div>
+        <div class="image" style="background-image: url(@Url.Content("~/Content/img/4.jpg"))"></div>
+        <div class="image" style="background-image: url(@Url.Content("~/Content/img/5.jpg"))"></div>
+        <div class="image" style="background-image: url(@Url.Content("~/Content/img/6.jpg"))"></div>
+        <div class="image" style="background-image: url(@Url.Content("~/Content/img/7.jpg"))"></div>
+        <div class="image" style="background-image: url(@Url.Content("~/Content/img/8.jpg"))"></div>
+        <div class="image" style="background-image: url(@Url.Content("~/Content/img/9.jpg"))"></div>
+        <div class="image" style="background-image: url(@Url.Content("~/Content/img/10.jpg"))"></div>
+    </center>
+</div>
+
+@section scripts {
+<script> 
+
+    function initImagesNew() {
+        
+        var $images = $('.gallery div.image');
+
+        $images.css('cursor', 'pointer');
+
+        $images.click(function () {
+            
+            var $clickedImg = $(this);
+
+            var imageId = $clickedImg.attr('data-image-id');
+
+            window.location = "/Home/ViewImage?image=" + imageId;
+        });
+
+    }
+
+    function initImages() {
+
+        var $images = $('.gallery div.image');
+
+        $images.css('cursor', 'pointer');
+
+        $images.click(function() {
+
+            // this == clicked <div>
+            // $(this) == clicked div jquery object
+            var $clickedImg = $(this);
+
+            var url = $clickedImg.css('background-image').toLowerCase();
+
+            var prefix = "content/img/";
+            var suffix = ".jpg";
+
+            var prefixIndex = url.indexOf(prefix);
+            var prefixEndIndex = prefixIndex + prefix.length;
+            var suffixIndex = url.indexOf(suffix);
+
+            var imageId = url.substring(prefixEndIndex, suffixIndex);
+ 
+            window.location = "/Home/ViewImage?image=" + imageId;
+        });
+
+    }
+
+    $(initImages);
+
+</script>
+}

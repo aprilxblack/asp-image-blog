@@ -1,0 +1,293 @@
+﻿
+@import url('https://fonts.googleapis.com/css?family=Aladin|Raleway:400,400i,700&subset=latin-ext');
+
+
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    padding: 0;
+    margin: 0;
+}
+
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+body {
+    background: #e0e5ff;
+    font-family: 'Raleway', sans-serif;
+    font-size: 16px;
+    color: #222;
+}
+
+h1, h2, h3, h4 {
+    font-family: 'Aladin', cursive;
+}
+
+.header {
+    font-family: 'Aladin', cursive;
+    font-size: 80px;
+    height: 250px;
+    text-align: center;
+    padding-top: 80px;
+    color: white;
+    text-shadow: 0 0 3px black, 1px 1px 2px black;
+}
+
+.header a {
+    color: white;
+    text-decoration: none;
+}
+
+.header a:hover {
+    color: white;
+    text-decoration: none;
+}
+
+.site-container {
+    padding: 0;
+    margin: 16px auto;
+    background: #cdd5ff;
+    box-shadow: 0 0 12px #555;
+}
+
+.site-columns {
+    background: #ccd0ff;
+}
+
+    .site-columns .col {
+        padding: 8px;
+        vertical-align: top;
+    }
+
+
+
+    .site-columns .left-col {
+        border-right: 1px solid #909090
+    }
+
+    .site-columns .right-col {
+        border-left: 1px solid #909090
+    }
+
+    .site-columns .left-col,
+    .site-columns .right-col {
+        background: #88afff;
+    }
+
+.site-footer {
+    padding: 8px;
+    border-top: 1px solid #909090;
+}
+
+.menu {
+    min-height: 48px;
+    background: #35c;
+    text-align: center;
+    font-size: 0;
+}
+
+    .menu a {
+        color: white;
+        text-decoration: none;
+        font-family: Aladin, cursive;
+        font-size: 28px;
+        padding: 8px 20px;
+        display: inline-block;
+        border: 1px solid #24a;
+        text-shadow: 1px 1px 3px rgba(0,0,0, 0.8);
+    }
+
+        .menu a:not(:first-child) {
+            border-left: 0px;
+        }
+
+.post-title {
+    font-family: Aladin, cursive;
+    font-size: 30px;
+    color: white;
+    text-shadow: 2px 2px 3px #333;
+    background: #35c;
+    border: 1px solid #909090;
+    padding: 2px 8px;
+    text-align: center;
+    margin: 5px 5px 5px 5px;
+}
+
+.breadcrumb {
+    padding: 30px 0;
+    text-align: center;
+    font-family: Aladin, cursive;
+    font-size: 25px;
+}
+
+
+.gallery div.image {
+    width: 300px;
+    height: 200px;
+    display: inline-block;
+    background-position: center center;
+    background-size: cover;
+}
+
+.image {
+    box-shadow: 2px 2px 3px #333;
+    border: 1px solid black;
+    text-align: center;
+    margin: 5px 5px 5px 5px;
+    max-width: 300px;
+    border-radius: 6px;
+
+    position: relative;
+    top:0; left: 0;
+
+    transition: top 80ms, left 80ms;
+}
+.image:hover {
+    top: -3px;
+    left: 2px;
+}
+
+.image-view {
+    box-shadow: 2px 2px 3px #666;
+    border: 1px solid black;
+    text-align: center;
+    margin: 16px auto;
+    max-width: 90%;
+    display: block;
+}
+
+.comment-box {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.comment-box textarea {
+    border: 1px solid rgba(0,0,0,0.3) !important;
+    background: white;
+    color: rgba(0,0,0,0.8);
+    margin: 8px 0;
+    width: 100%;
+    display: block;
+    outline: none !important;
+    min-height: 60px;
+    resize: vertical;
+    padding: 4px;
+}
+
+.comment-box button{
+    float: right;
+}
+
+.text-message{
+    margin: 5px 5px 5px 5px;
+}
+
+.comment {
+    border: 1px solid #999;
+    padding: 8px;
+    background: rgba(255, 255, 255, 0.3);
+}
+.comments {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.comment:not(:nth-child(2)){
+    border-top: none;
+}
+.comment .date {
+    float: right;
+    display: inline-block;
+}
+
+.comment .name{
+    display: inline-block;
+    font-weight: bold;
+}
+
+
+.image-rating {
+    width: 240px;
+    height: 48px;
+    background: url(/Content/img/stars-empty.png);
+    position: relative;
+    margin: 8px auto;
+    cursor: pointer;
+}
+
+.rating-full-display {
+    height: 48px;
+    background: url(/Content/img/stars-full.png);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    pointer-events: none;
+}
+
+
+
+
+@media (min-width: 768px) {
+    .site-container {
+        max-width: 100%;
+    }
+
+    .site-columns {
+        font-size: 0;
+        position: relative;
+        min-height: 1000px;
+    }
+
+        .site-columns .col {
+            font-size: 16px;
+            width: 220px;
+            display: block;
+        }
+
+        .site-columns .left-col {
+            left: 0;
+        }
+
+        .site-columns .right-col {
+            right: 0;
+        }
+
+        .site-columns .left-col,
+        .site-columns .right-col {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+        }
+
+        .site-columns .center-col {
+            margin-left: 220px;
+            width: calc(100% - 220px);
+        }
+}
+
+@media (min-width: 1024px) {
+    .site-container {
+        max-width: 90%;
+    }
+
+    .menu a {
+        padding: 8px 40px;
+    }
+}
+
+@media (min-width: 1280px) {
+    .site-container {
+        max-width: 70%;
+    }
+}
+
+.bg {
+    background: #5599ff;
+}
+

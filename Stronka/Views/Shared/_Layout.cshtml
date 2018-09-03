@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My page</title>
+
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+
+    <div class="site-container">
+
+        <div class="header bg">
+            @Html.ActionLink("April Black", "Index", "Home")
+        </div>
+
+        <div class="menu">
+
+            @Html.ActionLink("Home", "Index", "Home")
+            @Html.ActionLink("Gallery", "Gallery", "Home")
+            @Html.ActionLink("Top Rated", "Gallery", "Home")
+            @Html.ActionLink("Cat of the Day", "ViewImage", "Home")
+            @Html.ActionLink("About", "About", "Home")
+            @Html.ActionLink("Contact", "Contact", "Home")
+
+
+        </div>
+
+        <div class="site-columns">
+
+            <div class="left-col col">
+                Placeholder
+            </div>
+
+
+
+            <div class="center-col col">
+
+                @RenderBody()
+
+            </div>
+
+        </div>
+
+        <div class="site-footer">
+            Copyright &copy; 2018
+        </div>
+
+    </div>
+
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
+                
+             
+        

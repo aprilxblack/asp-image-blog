@@ -1,0 +1,103 @@
+﻿@model Stronka.Models.Image
+
+<div class="post-title">
+    @Model.Title
+</div>
+
+@Html.ActionLink("Return to gallery", "Gallery", "Home")
+<img class="image-view" src="@Model.Url" />
+
+<div class="image-rating" data-rating-image-id="@Model.ID" data-rating="@Model.AvgScore">
+    <div class="rating-full-display"></div>
+</div>
+
+<div class="comment-box">
+    <form method="POST" action="/Home/AddComment">
+        <input type="hidden" name="image" value="@Model.ID" />
+
+        <label for="nickname">Nickname: </label>
+        <input type="text" name="nickname" />
+        <br />
+
+        <textarea rows="5" name="message" placeholder="Write your message here..."></textarea>
+
+        <input type="submit" value="Submit" />
+    </form>
+</div>
+
+<div class="comments">
+    <h1>@Model.Comments.Count Comments</h1>
+    @foreach (var comment in Model.Comments)
+    {
+        <div class="comment">
+            <div class="name">@comment.Name</div>
+            <div class="date">@comment.Timestamp</div>
+            <div class="message">@comment.Message</div>
+        </div>
+    }
+</div>
+
+@section scripts {
+    <script>
+
+        function setRatingDisplay($rating, percent) {
+            $('.rating-full-display', $rating).css({
+                width: percent + '%'
+            });
+        }
+
+        function initRating( $rating ) {
+            var score = parseFloat( $rating.attr('data-rating') );
+            var percent = score * 100 / 5;
+            setRatingDisplay($rating, percent);
+            
+            $rating.on('mouseout', function (ev) {
+                setRatingDisplay($rating, percent);
+            });
+
+            $rating.on('mousemove', function (ev) {
+                var offsetX = ev.offsetX;
+                var totalX = $rating.innerWidth();
+                var percentage = (offsetX / totalX) * 100;
+                if (percentage < 20) percentage = 20;
+                percentage = Math.ceil(percentage / 20) * 20;
+                setRatingDisplay($rating, percentage);
+            });
+
+            $rating.on('click', function (ev) {
+                var offsetX = ev.offsetX;
+                var totalX = $rating.innerWidth();
+                var percentage = (offsetX / totalX) * 100;
+                var score = Math.ceil(percentage / 20);
+                if (score < 1) score = 1;
+
+                var imageId = $rating.attr('data-rating-image-id');
+
+                $rating.animate({
+                    opacity: 0.1
+                }, 500);
+
+                $.get("/Home/AddRating?image=" + imageId + "&score=" + score, function () {
+                    window.location.reload();
+                });
+
+            });
+
+        }
+
+        function initRatings() {
+
+            var $ratings = $('.image-rating[data-rating]');
+
+            $ratings.each(function () {
+                var $rating = $(this);
+
+                initRating($rating);
+            });
+
+        }
+
+        $(initRatings);
+
+    </script>
+}
